@@ -17,8 +17,7 @@ Click the "Pick a Word" button to generate a random word. The application will t
 
 ## Credits
 
-- This project uses the [Random Word API](https://random-word-api.herokuapp.com/) to generate a random word.
-- This project uses the [Google Books API](https://developers.google.com/books) to fetch book recommendations.
+This project uses the [Random Word API](https://random-word-api.herokuapp.com/) to generate a random word and [Google Books API](https://developers.google.com/books) to fetch book recommendations.
 
 ## Contributors
 
