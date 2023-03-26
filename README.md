@@ -1,4 +1,4 @@
-# Get Book Generator
+# Book Generator
 
 This project is a simple web that generates book recommendations based on a randomly generated word. It uses the Random Word API to generate a random word and then uses the Google Books API to fetch books related to the generated word.
 ![Website's Demo](demo.gif)
@@ -7,8 +7,8 @@ This project is a simple web that generates book recommendations based on a rand
 
 To use this project, simply clone the repository and open the `index.html` file in your browser.
 ```
-git clone https://github.com/yourusername/get-book.git
-cd get-book
+git clone https://github.com/nikihdyt/Book-Generator.git
+cd Book-Generator
 ```
 
 ## Usage
@@ -22,5 +22,5 @@ Click the "Pick a Word" button to generate a random word. The application will t
 
 ## Contributors
 
-- [Santi Widyastuti]()
+- [Santi Widyastuti](https://github.com/Santiw245)
 - [Vellya Riona](github.com/vellyariona)

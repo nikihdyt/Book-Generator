@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Get Book </title>
+    <title>Book Generator</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
@@ -27,12 +27,12 @@
             const randomWord = data;
             document.getElementById('word').innerHTML = `Random Word: ${randomWord}`;
             console.log(randomWord);
-            getRandomBook(randomWord);
+            getBooks(randomWord);
           })
           .catch(error => console.error(error));
       }
       
-      function getRandomBook(searchTerm) {
+      function getBooks(searchTerm) {
         const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
         
         fetch(apiUrl)
