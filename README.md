@@ -23,4 +23,4 @@ Click the "Pick a Word" button to generate a random word. The application will t
 ## Contributors
 
 - [Santi Widyastuti](https://github.com/Santiw245)
-- [Vellya Riona](github.com/vellyariona)
+- [Vellya Riona](https://github.com/vellyariona)
