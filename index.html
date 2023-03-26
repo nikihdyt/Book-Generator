@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Book </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      body {
+        padding: 30px;
+        margin: auto;
+        text-align: center;
+      }
+      </style>
+  </head>
+
+  <body>
+    <h1>Book Generator</h1>
+    <p>Click the button to fetch a book:</p>
+    <button type="button" class="btn btn-primary" onclick="getRandomWord()">Pick a Word</button>
+    <p id="word"></p>
+    <div id="book-details" style="text-align: left;"></div>
+    <script>
+      function getRandomWord() {
+        fetch('https://random-word-api.herokuapp.com/word')
+          .then(response => response.json())
+          .then(data => {
+            const randomWord = data;
+            document.getElementById('word').innerHTML = `Random Word: ${randomWord}`;
+            console.log(randomWord);
+            getRandomBook(randomWord);
+          })
+          .catch(error => console.error(error));
+      }
+      
+      function getRandomBook(searchTerm) {
+        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
+        
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            let bookDetails = '';
+
+            for (let i = 0; i < 10; i++) {
+              const book = data.items[i];
+              bookDetails += `
+                <h2>${book.volumeInfo.title}</h2>
+
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Author</th>
+                      <th>Publisher</th>
+                      <th>Published Date</th>
+                      <th>Photo</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>${book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown'}</td>
+                      <td>${book.volumeInfo.publisher ? book.volumeInfo.publisher : 'Unknown'}</td>
+                      <td>${book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : 'Unknown'}</td>
+                      <td><img src="${book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''}" alt="${book.volumeInfo.title} cover"></td>
+                      <td>${book.volumeInfo.description ? book.volumeInfo.description : 'No description available.'}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              `;
+            }
+
+            document.getElementById('book-details').innerHTML = bookDetails;
+
+          })
+          .catch(error => console.error(error));
+      }
+    </script>
+  </body>
+</html>
